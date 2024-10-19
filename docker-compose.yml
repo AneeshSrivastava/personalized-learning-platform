@@ -1,0 +1,53 @@
+services:
+  mongo:
+    image: mongo:8.0.1
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "${MONGO_DB_PORT}:${MONGO_DB_PORT}"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - backend-network
+
+  user-service:
+    build:
+      context: ./user-service
+    container_name: user-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:${MONGO_DB_PORT}/user-db?authSource=admin
+    networks:
+      - backend-network
+    restart: always
+    volumes:
+      - ./user-service:/app
+
+  recommendation-service:
+    build:
+      context: ./recommendation-service
+    container_name: recommendation-service
+    ports:
+      - "4001:4001"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:${MONGO_DB_PORT}/recommendation-db?authSource=admin
+    networks:
+      - backend-network
+    restart: always
+    volumes:
+      - ./recommendation-service:/app
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  backend-network:
+    driver: bridge
