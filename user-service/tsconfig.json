@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // The target JavaScript version
+    "module": "commonjs", // The module system
+    "outDir": "./dist", // Output directory for compiled files
+    "rootDir": "./", // Root directory of TypeScript files
+    "strict": true, // Enable strict type checking
+    "esModuleInterop": true, // Enable compatibility with ES6 modules
+    "skipLibCheck": true, // Skip type checking for libraries
+    "forceConsistentCasingInFileNames": true // Ensure consistent casing in imports
+  },
+  "exclude": ["node_modules", "dist"]
+}
