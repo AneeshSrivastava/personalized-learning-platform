@@ -13,7 +13,7 @@ export const registerUser = async (
   res: Response
 ): Promise<void> => {
   try {
-    console.log("Validating user input");
+    console.log("Validating user inputs");
     const { error } = userValidationSchema.validate(req.body);
     if (error) {
       res.status(400).send({ message: error.details[0].message });

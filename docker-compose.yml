@@ -43,6 +43,14 @@ services:
     restart: always
     volumes:
       - ./recommendation-service:/app
+  ui-service:
+    build:
+      context: ./ui/personalized-learning-ui
+    container_name: ui-service
+    ports:
+      - "3002:80" # Expose the container's port 80 (nginx) on localhost:3002
+    networks:
+      - backend-network
 
 volumes:
   mongo-data:
