@@ -33,7 +33,10 @@ export const registerUser = async (
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create new user and save to the database
-    const user = new userModel({ email, password: hashedPassword });
+    const user = new userModel({
+      email,
+      password: hashedPassword,
+    });
     await user.save();
 
     res.status(201).send({ message: "User registered successfully." });
