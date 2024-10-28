@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import { userModel } from "../models/user";
+import { userModel } from "../database/models/user";
 import Joi from "joi";
 
 const userValidationSchema = Joi.object({

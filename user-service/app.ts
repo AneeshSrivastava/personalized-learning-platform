@@ -1,6 +1,6 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes";
-import connectDB from "./config/db";
+import connectDB from "./database/config/db";
 import cors from "cors";
 
 const port = 3000;

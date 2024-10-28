@@ -1,12 +1,16 @@
 import { Request, Response, NextFunction } from "express";
-import { userModel } from "../models/user";
+import { userModel } from "../database/models/user";
 
 export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   // Authentication logic here...
 };
 
-export const getUserProgress = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getUserProgress = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const user = await userModel.findById(req.params.id);
     if (!user) {
