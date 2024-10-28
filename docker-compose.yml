@@ -43,6 +43,7 @@ services:
     restart: always
     volumes:
       - ./recommendation-service:/app
+  
   ui-service:
     build:
       context: ./ui/personalized-learning-ui
@@ -51,6 +52,22 @@ services:
       - "3002:80" # Expose the container's port 80 (nginx) on localhost:3002
     networks:
       - backend-network
+  
+  content-service:
+    build:
+      context: ./content-service
+    container_name: content-service
+    ports:
+      - "5001:5001"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:${MONGO_DB_PORT}/content-db?authSource=admin
+    networks:
+      - backend-network
+    restart: always
+    volumes:
+      - ./content-service:/app
 
 volumes:
   mongo-data:
