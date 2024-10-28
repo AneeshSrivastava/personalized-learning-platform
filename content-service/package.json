@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx nodemon --watch . --exec ts-node app.ts",
+    "dev": "ts-node-dev --respawn --transpile-only app.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.7.7",
     "nodemon": "^3.1.7",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "ts-node": "^10.9.2"
   }
 }
