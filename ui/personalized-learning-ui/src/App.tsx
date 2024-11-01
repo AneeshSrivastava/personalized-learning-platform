@@ -1,27 +1,17 @@
-import { Link } from "react-router-dom";
-import "./App.css"; // Make sure to import the CSS file
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="container">
-      <header className="header">
-        <h1>Welcome to Personalized Learning Platform</h1>
-      </header>
-
-      <nav className="nav">
-        <Link to="/login" className="btn">
-          Login
-        </Link>
-        <span> | </span>
-        <Link to="/register" className="btn">
-          Register
-        </Link>
-      </nav>
-
-      <footer className="footer">
-        <p>&copy; 2024 My Learning Platform</p>
-      </footer>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

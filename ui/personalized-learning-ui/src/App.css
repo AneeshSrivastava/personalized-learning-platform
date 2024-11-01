@@ -1,44 +1,44 @@
-/* Global Styles */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f7f9fc;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #333;
+  font-family: 'PT Sans', sans-serif;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+.home,
+.services,
+.products,
+.sign-up {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
 }
 
-/* Header */
-.header {
-  background-color: #007bff;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
+.services {
+  background-image: url('../public/images/img-1.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
 }
 
-/* Button Styles */
-.btn {
-  background-color: #007bff;
-  color: white;
-  text-decoration: none; /* Remove underline for links */
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+.products {
+  background-image: url('../public//images/img-1.jpg');
+  background-position: center;
+  background-size: fill;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
 }
 
-.btn:hover {
-  background-color: #0056b3;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 20px 0;
-  background-color: #007bff;
-  color: white;
+.sign-up {
+  background-image: url('../public/images/img-8.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
 }
