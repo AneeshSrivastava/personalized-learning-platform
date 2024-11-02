@@ -15,13 +15,13 @@ export const Button = ({
   children: React.ReactNode;
   type: "button" | "submit" | "reset";
   onClick: () => void;
-  buttonStyle: "btn--primary" | "btn--outline";
-  buttonSize: "btn--medium" | "btn--large";
+  buttonStyle?: "btn--primary" | "btn--outline";
+  buttonSize?: "btn--medium" | "btn--large";
 }) => {
-  const checkButtonStyle = STYLES.includes(buttonStyle)
-    ? buttonStyle
-    : STYLES[0];
-  const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
+  const checkButtonStyle =
+    buttonStyle && STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
+  const checkButtonSize =
+    buttonSize && SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
     <Link to="/sign-up" className="btn-mobile">
