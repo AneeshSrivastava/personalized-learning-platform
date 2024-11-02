@@ -43,7 +43,7 @@ services:
     restart: always
     volumes:
       - ./recommendation-service:/app
-  
+
   ui-service:
     build:
       context: ./ui/personalized-learning-ui
@@ -52,7 +52,9 @@ services:
       - "3002:80" # Expose the container's port 80 (nginx) on localhost:3002
     networks:
       - backend-network
-  
+    volumes:
+      - ./ui/personalized-learning-ui/build:/usr/share/nginx/html # Note: This code mounts the build folder from local to Docker container. To see the changes in UI, just run 'npm run build' in the ui/personalized-learning-ui folder.
+
   content-service:
     build:
       context: ./content-service

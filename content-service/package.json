@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon --watch . --exec ts-node app.ts",
-    "dev": "ts-node-dev --respawn --transpile-only app.ts"
+    "start": "npx nodemon --watch . --exec ts-node src/app.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +23,8 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.7.7",
     "nodemon": "^3.1.7",
-    "typescript": "^5.6.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.3"
   }
 }

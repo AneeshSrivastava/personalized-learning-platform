@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./Button";
+import { Button } from "../Button/Button";
 import "./Navbar.css";
 
 function Navbar() {
@@ -13,13 +13,18 @@ function Navbar() {
   const showButton = () => {
     if (window.innerWidth <= 960) setButton(false);
     else setButton(true);
-  }
+  };
+  // To maintain the state of the button when the component is mounted and unmounted we use useEffect hook with an empty array as the second argument to the useEffect function. This will ensure that the useEffect function is only called once when the component is mounted.
+  useEffect(() => {
+    showButton();
+    console.log("Navbar component mounted via useEffect");
+  }, []);
   window.addEventListener("resize", showButton);
   return (
     <>
       <div className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             ALP <i className="fab fa-typo3"></i>
           </Link>
           <div className="menu-icon" onClick={handleMenuClick}>
