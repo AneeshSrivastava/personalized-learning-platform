@@ -13,7 +13,7 @@ export const Button = ({
   buttonSize,
 }: {
   children: React.ReactNode;
-  type: "button" | "submit" | "reset";
+  type?: "button" | "submit" | "reset";
   onClick?: () => void;
   buttonStyle?: "btn--primary" | "btn--outline";
   buttonSize?: "btn--medium" | "btn--large";
