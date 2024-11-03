@@ -17,7 +17,6 @@ function Navbar() {
   // To maintain the state of the button when the component is mounted and unmounted we use useEffect hook with an empty array as the second argument to the useEffect function. This will ensure that the useEffect function is only called once when the component is mounted.
   useEffect(() => {
     showButton();
-    console.log("Navbar component mounted via useEffect");
   }, []);
   window.addEventListener("resize", showButton);
   return (

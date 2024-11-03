@@ -14,7 +14,7 @@ export const Button = ({
 }: {
   children: React.ReactNode;
   type: "button" | "submit" | "reset";
-  onClick: () => void;
+  onClick?: () => void;
   buttonStyle?: "btn--primary" | "btn--outline";
   buttonSize?: "btn--medium" | "btn--large";
 }) => {
