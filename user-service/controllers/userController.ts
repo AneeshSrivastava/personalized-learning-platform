@@ -6,7 +6,7 @@ export const loginUser = async (req: Request, res: Response) => {
   // Authentication logic here...
 };
 
-export const getUserProgress = async (
+export const getUserTopics = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -17,7 +17,7 @@ export const getUserProgress = async (
       res.status(404).send({ message: "User not found" });
       return;
     }
-    res.send(user.progress);
+    res.send(user.topics);
   } catch (err) {
     console.log(err);
     res.status(500).send({ message: "Error fetching user progress" });

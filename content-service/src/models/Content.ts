@@ -2,21 +2,15 @@ import mongoose from "mongoose";
 
 const contentSchema = new mongoose.Schema(
   {
+    id: { type: String, required: true },
     title: { type: String, required: true },
-    description: { type: String, required: true },
-    topics: [
-      {
-        topicId: { type: String, required: true },
-        topicTitle: { type: String, required: true },
-        duration: { type: Number, required: true },
-        content: { type: String, required: true },
-      },
-    ],
-    category: { type: String, required: true },
-    level: { type: String, required: true },
+    description: { type: String, required: false },
+    url: { type: String, required: true },
+    thumbnail: { type: String, required: true },
     tags: [{ type: String }],
-    createdBy: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now },
+    summary: { type: String },
+    level: { type: String },
+    topic: { type: String },
   },
   { timestamps: true }
 );
