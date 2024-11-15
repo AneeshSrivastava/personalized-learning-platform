@@ -7,7 +7,10 @@ const port = 3000;
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:3002", // Allow requests only from UI origin
+    origin: [
+      "http://localhost:3002",
+      "https://dev-en5ychwmohg0hxlc.us.auth0.com",
+    ], // Allow requests only from UI origin
   })
 );
 connectDB();

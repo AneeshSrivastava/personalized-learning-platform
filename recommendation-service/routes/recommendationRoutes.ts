@@ -3,6 +3,6 @@ import { getRecommendations } from "../controllers/recommendationController";
 
 const router = express.Router();
 
-router.get("/user/:id/recommendations", getRecommendations);
+router.get("/recommendations", getRecommendations);
 
 export default router;

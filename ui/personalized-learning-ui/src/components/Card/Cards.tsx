@@ -1,47 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import CardItem from "./CardItem";
 import "./Cards.css";
+import { Content } from "../../Interfaces/Content";
 
 const Cards = () => {
+  const [cardData, setCardData] = useState([] as Content[]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5001/api/content");
+        const data: Content[] = response.data;
+        console.log(`Fetched a total of ${data.length} contents...`);
+        setCardData(data);
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          console.error("Axios Error: ", err.message);
+          console.error("Axios Error Response: ", err.response);
+          console.error("Axios Error Config: ", err.config);
+        } else {
+          console.error("General Error: ", err);
+        }
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className="cards">
       <h1>Check out these Trending courses!</h1>
       <div className="cards__container">
         <div className="cards__wrapper">
-          <ul className="cards__items">
-            <CardItem
-              src="images/img-9.jpg"
-              text="Explore the knowledge for Python"
-              label="Python"
-              path="/course/python"
-            />
-            <CardItem
-              src="images/img-2.jpg"
-              text="Explore the knowledge for Golang"
-              label="Golang"
-              path="/course/golang"
-            />
-          </ul>
-          <ul className="cards__items">
-            <CardItem
-              src="images/img-3.jpg"
-              text="Set Sail in the Atlantic Ocean visiting Uncharted Waters"
-              label="Mystery"
-              path="/services"
-            />
-            <CardItem
-              src="images/img-4.jpg"
-              text="Experience Football on Top of the Himilayan Mountains"
-              label="Adventure"
-              path="/products"
-            />
-            <CardItem
-              src="images/img-8.jpg"
-              text="Ride through the Sahara Desert on a guided camel tour"
-              label="Adrenaline"
-              path="/sign-up"
-            />
-          </ul>
+          {cardData.map((card) => (
+            <>
+              <ul className="cards__items">
+                <CardItem key={card.id} {...card} />
+              </ul>
+            </>
+          ))}
         </div>
       </div>
     </div>

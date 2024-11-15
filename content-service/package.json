@@ -16,6 +16,7 @@
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
     "bson": "^6.9.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "mongoose": "^7.6.3",
@@ -23,6 +24,7 @@
     "node-cron": "^3.0.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.9",

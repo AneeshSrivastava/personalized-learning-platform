@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
 import "./Navbar.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
   const handleMenuClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -14,6 +16,7 @@ function Navbar() {
     if (window.innerWidth <= 960) setButton(false);
     else setButton(true);
   };
+  console.log(`isAuthenticated: ${isAuthenticated}`);
   // To maintain the state of the button when the component is mounted and unmounted we use useEffect hook with an empty array as the second argument to the useEffect function. This will ensure that the useEffect function is only called once when the component is mounted.
   useEffect(() => {
     showButton();
@@ -68,16 +71,31 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          {button && (
-            <Button
-              type="button"
-              onClick={() => {}}
-              buttonStyle="btn--outline"
-              buttonSize="btn--medium"
-            >
-              Sign Up
-            </Button>
-          )}
+          {isAuthenticated
+            ? button && (
+                <Button
+                  type="button"
+                  onClick={() =>
+                    logout({
+                      logoutParams: { returnTo: window.location.origin },
+                    })
+                  }
+                  buttonStyle="btn--outline"
+                  buttonSize="btn--medium"
+                >
+                  Log Out
+                </Button>
+              )
+            : button && (
+                <Button
+                  type="button"
+                  onClick={() => loginWithRedirect()}
+                  buttonStyle="btn--outline"
+                  buttonSize="btn--medium"
+                >
+                  Log In
+                </Button>
+              )}
         </div>
       </div>
     </>

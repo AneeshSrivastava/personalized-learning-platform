@@ -7,13 +7,12 @@ export const getAllContent = async (
 ): Promise<void> => {
   try {
     // If request has a body payload like "topic" then return content by topic
-    if (req.body.topic) {
-      const contents = await ContentModel.find({ tags: req.body.topic });
-      res.status(200).json(contents);
-      return;
-    }
-    const contents = await ContentModel.find();
+    // const contents = await ContentModel.find({ tags: req.body.topic });
+    const contents = await ContentModel.aggregate([{ $sample: { size: 10 } }]);
+    // Get top 10 rows in ContentModel
+
     res.status(200).json(contents);
+    return;
   } catch (error) {
     res.status(500).json({ message: "Error fetching content", error });
   }

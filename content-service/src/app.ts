@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import contentRoutes from "./routes/contentRoutes";
 import morgan from "morgan";
 import { fetchAndUpdateContent } from "./helpers/fetchAndUpdateContent";
+import cors from "cors";
 
 dotenv.config();
 
@@ -13,6 +14,9 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(bodyParser.json());
+
+// Enable CORS - allow requests from any origin
+app.use(cors());
 // app.use(morgan("dev"));
 
 app.use("/api", contentRoutes);
@@ -32,5 +36,5 @@ app.listen(PORT, () => {
 });
 
 // Schedule the fetchAndUpdateContent function to run every 15 minutes
-cron.schedule("*/15 * * * *", fetchAndUpdateContent);
+// cron.schedule("*/15 * * * *", fetchAndUpdateContent);
 // cron.schedule("*/1 * * * *", fetchAndUpdateContent);

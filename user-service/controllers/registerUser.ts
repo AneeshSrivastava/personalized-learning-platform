@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { userModel } from "../database/models/user";
 import Joi from "joi";
+import { constants } from "../constants";
 
 const userValidationSchema = Joi.object({
   email: Joi.string().email().required(),
@@ -28,7 +29,8 @@ export const registerUser = async (
       return;
     }
     console.log("No duplicate user found");
-
+    const userTopic = getRandomTag(constants.topics);
+    const userLevel = getRandomTag(constants.level);
     // Hash the password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -36,6 +38,10 @@ export const registerUser = async (
     const user = new userModel({
       email,
       password: hashedPassword,
+      topics: {
+        tag: userTopic,
+        level: userLevel,
+      },
     });
     await user.save();
 
@@ -47,3 +53,8 @@ export const registerUser = async (
     return;
   }
 };
+
+function getRandomTag(tags: string[]): string {
+  const randomIndex = Math.floor(Math.random() * tags.length);
+  return tags[randomIndex];
+}

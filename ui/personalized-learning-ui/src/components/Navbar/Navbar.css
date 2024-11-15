@@ -81,6 +81,7 @@
   }
 
   .nav-menu {
+    align-content: center;
     justify-content: start;
     display: flex;
     flex-direction: column;

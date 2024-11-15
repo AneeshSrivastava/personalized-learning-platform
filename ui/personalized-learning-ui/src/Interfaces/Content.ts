@@ -1,5 +1,6 @@
-export interface Recommendation {
-  contentId: string;
+export interface Content {
+  _id: string;
+  id: string;
   title: string;
   description: string;
   url: string;
@@ -8,4 +9,7 @@ export interface Recommendation {
   summary: string;
   level: string;
   topic: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
