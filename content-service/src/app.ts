@@ -35,6 +35,6 @@ app.listen(PORT, () => {
   console.log(`Content service running on port ${PORT}`);
 });
 
-// Schedule the fetchAndUpdateContent function to run every 15 minutes
-// cron.schedule("*/15 * * * *", fetchAndUpdateContent);
+// Run every 15 minutes
+cron.schedule("*/15 * * * *", fetchAndUpdateContent);
 // cron.schedule("*/1 * * * *", fetchAndUpdateContent);
