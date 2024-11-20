@@ -30,7 +30,7 @@ const CardItem = (props: CardItemProps) => {
         </figure>
         <div className="cards__item__info">
           <h5 className="cards__item__text">{props.title}</h5>
-          <p className="cards__item__summary">{props.description}</p>
+          <p className="cards__item__summary">{props.summary}</p>
           <div className="level-tag">
             <span>{props.level}</span>
           </div>
