@@ -11,33 +11,46 @@ The **Personalized Learning Platform** is an innovative web application designed
 - **Assessment & Feedback**: Interactive quizzes and feedback mechanisms to assess user understanding and track progress.
 - **Analytics Dashboard**: Visual insights into user performance and learning patterns.
 - **Admin Panel**: Administrative functionalities to manage users, content, and assessments.
+- **Content Recommendation**: Personalized content recommendations based on user interests and progress.
 
 ## Technology Stack
 
-- **Frontend**: React
+- **Frontend**: React, TypeScript
 - **Backend**: Node.js, TypeScript, Express
 - **Database**: MongoDB
-- **Authentication**: JSON Web Tokens (JWT)
 - **Containerization**: Docker
-- **Task Queue**: Bull
-- **Testing**: Jest, ESLint
+- **Routing**: React Router
 
 ## Architecture
 
-This application follows the Model-View-Controller (MVC) architecture and is built using a microservices approach. Each service interacts through well-defined APIs, allowing for modular development and easy scalability.
+The application follows the Model-View-Controller (MVC) architecture and is built using a microservices approach. Each service interacts through well-defined APIs, allowing for modular development and easy scalability.
 
-## Getting Started
+### Microservices
 
-### Prerequisites
+1. **User Service**: Handles user registration, authentication, and user-related data.
+   - **Entry Point**: `user-service/app.ts`
+   - **Routes**: `user-service/routes/userRoutes.ts`
+   - **Controllers**: `user-service/controllers`
 
-- Node.js (v14 or higher)
-- Docker
-- MongoDB (local or cloud instance)
+2. **Recommendation Service**: Provides personalized learning recommendations based on user progress.
+   - **Entry Point**: `recommendation-service/app.ts`
+   - **Routes**: `recommendation-service/routes/recommendationRoutes.ts`
+   - **Controllers**: `recommendation-service/controllers/recommendationController.ts`
 
-### Installation
+3. **Content Service**: Manages educational content and delivers it to users.
+   - **Entry Point**: `content-service/app.ts`
+   - **Routes**: `content-service/routes/contentRoutes.ts`
+   - **Controllers**: `content-service/controllers/contentController.ts`
+
+4. **UI Service**: The frontend application built with React.
+   - **Entry Point**: `ui/personalized-learning-ui/src/index.tsx`
+   - **Components**: `ui/personalized-learning-ui/src/pages`
+
+## Running the Application
+
+To run the application, follow these steps:
 
 1. **Clone the repository**:
-
    ```bash
    git clone https://github.com/AneeshSrivastava/personalized-learning-platform.git
    cd personalized-learning-platform
@@ -75,7 +88,7 @@ This application follows the Model-View-Controller (MVC) architecture and is bui
 
 ## Usage
 
-Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to access the application. Follow the on-screen instructions to register and start.
+Open your browser and navigate to [http://localhost:3002](http://localhost:3002) to access the application. Follow the on-screen instructions to register and start.
 
 ## Contact
 
